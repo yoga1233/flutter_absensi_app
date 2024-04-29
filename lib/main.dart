@@ -1,5 +1,6 @@
 import 'package:altius_absensi_app/data/datasources/auth_remote_datasource.dart';
 import 'package:altius_absensi_app/presentation/auth/bloc/login/login_bloc.dart';
+import 'package:altius_absensi_app/presentation/auth/bloc/logout/logout_bloc.dart';
 import 'package:altius_absensi_app/presentation/auth/pages/splash_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -16,8 +17,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => LoginBloc(AuthRemoteDatasource()),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => LoginBloc(AuthRemoteDatasource()),
+        ),
+        BlocProvider(
+          create: (context) => LogoutBloc(AuthRemoteDatasource()),
+        ),
+      ],
       child: MaterialApp(
         title: 'Flutter Absensi',
         theme: ThemeData(

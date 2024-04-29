@@ -1,3 +1,4 @@
+import 'package:altius_absensi_app/data/datasources/auth_local_datasource.dart';
 import 'package:altius_absensi_app/presentation/auth/bloc/login/login_bloc.dart';
 import 'package:altius_absensi_app/presentation/home/pages/main_page.dart';
 import 'package:flutter/material.dart';
@@ -92,6 +93,7 @@ class _LoginPageState extends State<LoginPage> {
                 listener: (context, state) {
                   state.maybeWhen(
                     success: (data) {
+                      AuthLocalDatasource().saveAuthData(data);
                       context.pushReplacement(const MainPage());
                     },
                     failed: (message) {
