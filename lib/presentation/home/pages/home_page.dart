@@ -1,4 +1,5 @@
 import 'package:altius_absensi_app/core/core.dart';
+import 'package:altius_absensi_app/presentation/home/pages/register_face_attendance_page.dart';
 import 'package:altius_absensi_app/presentation/home/widgets/menu_button.dart';
 import 'package:flutter/material.dart';
 
@@ -188,7 +189,7 @@ class _HomePageState extends State<HomePage> {
                           Button.filled(
                             onPressed: () {
                               context.pop();
-                              // context.push(const AttendancePage());
+                              context.push(const RegisterFaceAttendancePage());
                             },
                             label: 'Izinkan',
                           ),
